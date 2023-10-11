@@ -31,41 +31,33 @@ function afficherImage(image) {
 	img.src = `./assets/images/slideshow/${image}`
 }
 
+function afficher() {
+	afficherImage(slides[i]["image"])
+	afficherTagline(slides[i]["tagLine"])
+	afficherDot(listeDots[i])
+}
+
 let i = 0
 let listeDots = document.querySelectorAll(".dot")
 
 let arrow_left = document.querySelector(".arrow_left")
 arrow_left.addEventListener("click", () => {
+	afficherDot(listeDots[i])
 	if(i > 0) {
-		afficherDot(listeDots[i])
 		i--
-		afficherImage(slides[i]["image"])
-		afficherTagline(slides[i]["tagLine"])
-		afficherDot(listeDots[i])
 	} else {
-		afficherDot(listeDots[i])
 		i = (slides.length)-1
-		afficherImage(slides[i]["image"])
-		afficherTagline(slides[i]["tagLine"])
-		afficherDot(listeDots[i])
 	}
-	
+	afficher()
 })
 
 let arrow_right = document.querySelector(".arrow_right")
 arrow_right.addEventListener("click", () => {
+	afficherDot(listeDots[i])
 	if(i < (slides.length)-1) {
-		afficherDot(listeDots[i])
 		i++
-		afficherImage(slides[i]["image"])
-		afficherTagline(slides[i]["tagLine"])
-		afficherDot(listeDots[i])
 	} else {
-		afficherDot(listeDots[i])
 		i = 0
-		afficherDot(listeDots[i])
-		afficherImage(slides[i]["image"])
-		afficherTagline(slides[i]["tagLine"])
 	}
-	
+	afficher()
 })
